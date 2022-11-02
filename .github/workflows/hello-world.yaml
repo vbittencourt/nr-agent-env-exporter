@@ -1,5 +1,23 @@
 on:
   workflow_dispatch:
+    inputs:
+      account:
+        description: 'NR Account'
+        required: true
+        type: number
+      nrak_key:
+        description: 'Sua NRAK- API KEY'
+        required: true
+        type: string
+      yourlib:
+        description: 'Biblioteca .jar'
+        required: true
+        type: string
+      outputfile:
+        description: 'Nome do report'
+        required: true
+        type: string
+
   push:
     branches:
       - main
@@ -14,4 +32,5 @@ jobs:
         with:
           node-version: '14'
       - run: npm install axios
-      - run: ./search.js -h
+      - run: ./search.js -a ${{ inputs.account }} -k ${{ inputs.nrak_key }} \
+      --field-modules --starts ${{ inputs.yourlib }} --out ${{ inputs.outputfile }}
