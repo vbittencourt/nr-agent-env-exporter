@@ -32,5 +32,4 @@ jobs:
         with:
           node-version: '14'
       - run: npm install axios
-      - run: ./search.js -a ${{ inputs.account }} -k ${{ inputs.nrak_key }} \
-      --field-modules --starts ${{ inputs.yourlib }} --out ${{ inputs.outputfile }}
+      - run: ./search.js -a ${{ inputs.account }} -k ${{ inputs.nrak_key }} --field-modules --starts ${{ inputs.yourlib }} --out ${{ inputs.outputfile }}
